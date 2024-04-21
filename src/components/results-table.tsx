@@ -1,6 +1,6 @@
 import React, { ReactElement, useContext } from 'react';
 import { InvestmentContext } from './investment-provider';
-import { calculateInvestmentResults } from '../util/investment';
+import { calculateInvestmentResults, formatter } from '../util/investment';
 
 const THEAD_TITLES = [
   'Year',
@@ -21,6 +21,10 @@ export default function ResultsTable(): ReactElement {
     duration,
   });
 
+  // Calculating the total interest accumulated over the years
+  let totalInterest = 0;
+  let investedCapital = 0;
+
   return (
     <table id="result">
       <thead id="thead">
@@ -31,15 +35,20 @@ export default function ResultsTable(): ReactElement {
         </tr>
       </thead>
       <tbody>
-        {annualData.map((yearData) => (
-          <tr>
-            <td>{yearData.year}</td>
-            <td>{yearData.interest}</td>
-            <td>{yearData.annualInvestment}</td>
-            <td>{yearData.valueEndOfYear}</td>
-            <td>{initialInvestment}</td>
-          </tr>
-        ))}
+        {annualData.map((yearData) => {
+          totalInterest += yearData.interest;
+          investedCapital =
+            initialInvestment + annualInvestment * yearData.year;
+          return (
+            <tr key={yearData.year}>
+              <td>{yearData.year}</td>
+              <td>{formatter.format(yearData.valueEndOfYear)}</td>
+              <td>{formatter.format(yearData.interest)}</td>
+              <td>{formatter.format(totalInterest)}</td>
+              <td>{formatter.format(investedCapital)}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

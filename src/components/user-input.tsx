@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Input from './input';
+import { InvestmentContext } from './investment-provider';
 
 const INPUT_GROUP_TITLES = [
   'INITIAL INVESTMENT',
@@ -9,10 +10,16 @@ const INPUT_GROUP_TITLES = [
 ];
 
 export default function UserInput() {
-  const [initialInvestment, setInitialInvestment] = useState(0);
-  const [annualInvestment, setAnnualInvestment] = useState(0);
-  const [expectedReturn, setExpectedReturn] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const {
+    initialInvestment,
+    setInitialInvestment,
+    annualInvestment,
+    setAnnualInvestment,
+    expectedReturn,
+    setExpectedReturn,
+    duration,
+    setDuration,
+  } = useContext(InvestmentContext);
 
   return (
     <div id="user-input">

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ReactElement } from 'react';
+import { InvestmentContext } from './investment-provider';
+import { calculateInvestmentResults } from '../util/investment';
 
 const THEAD_TITLES = [
   'Year',
@@ -10,6 +12,16 @@ const THEAD_TITLES = [
 ];
 
 export default function ResultsTable(): ReactElement {
+  const { initialInvestment, annualInvestment, expectedReturn, duration } =
+    useContext(InvestmentContext);
+
+  const annualData = calculateInvestmentResults({
+    initialInvestment,
+    annualInvestment,
+    expectedReturn,
+    duration,
+  });
+
   return (
     <table id="result">
       <thead id="thead">

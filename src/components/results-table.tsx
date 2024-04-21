@@ -11,16 +11,23 @@ const THEAD_TITLES = [
 
 export default function ResultsTable(): ReactElement {
   return (
-    <div id="result">
-      <table>
-        <thead id="thead">
+    <table id="result">
+      <thead id="thead">
+        <tr>
           {THEAD_TITLES.map((title) => (
-            <>
-              <th>{title}</th>
-            </>
+            <th key={title}>{title}</th>
           ))}
-        </thead>
-      </table>
-    </div>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>X</td>
+          <td>X</td>
+          <td>X</td>
+          <td>X</td>
+        </tr>
+      </tbody>
+    </table>
   );
 }

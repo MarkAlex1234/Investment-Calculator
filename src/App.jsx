@@ -5,13 +5,11 @@ import { InvestmentProvider } from './components/investment-provider';
 
 function App() {
   return (
-    <>
+    <InvestmentProvider>
       <Header />
-      <InvestmentProvider>
-        <UserInput />
-        <ResultsTable />
-      </InvestmentProvider>
-    </>
+      <UserInput />
+      <ResultsTable />
+    </InvestmentProvider>
   );
 }
 

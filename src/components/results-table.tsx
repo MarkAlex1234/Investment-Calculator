@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { ReactElement } from 'react';
+import React, { ReactElement, useContext } from 'react';
 import { InvestmentContext } from './investment-provider';
 import { calculateInvestmentResults } from '../util/investment';
 
@@ -32,13 +31,15 @@ export default function ResultsTable(): ReactElement {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>X</td>
-          <td>X</td>
-          <td>X</td>
-          <td>X</td>
-        </tr>
+        {annualData.map((yearData) => (
+          <tr>
+            <td>{yearData.year}</td>
+            <td>{yearData.interest}</td>
+            <td>{yearData.annualInvestment}</td>
+            <td>{yearData.valueEndOfYear}</td>
+            <td>{initialInvestment}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

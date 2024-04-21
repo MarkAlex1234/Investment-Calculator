@@ -18,7 +18,7 @@ export default function Input({
       value === '' ||
       (numericValue >= min && numericValue <= max && /^\d*\.?\d*$/.test(value))
     ) {
-      setInputValue(value);
+      setInputValue(Number(value));
     }
   }
 

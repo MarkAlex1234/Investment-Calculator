@@ -1,6 +1,7 @@
 import React, { ReactElement, useContext } from 'react';
 import { InvestmentContext } from './investment-provider';
 import { calculateInvestmentResults, formatter } from '../util/investment';
+import useCalculateInvestmentResults from '../hooks/use-calculate-investment-results';
 
 const THEAD_TITLES = [
   'Year',
@@ -11,15 +12,9 @@ const THEAD_TITLES = [
 ];
 
 export default function ResultsTable(): ReactElement {
-  const { initialInvestment, annualInvestment, expectedReturn, duration } =
-    useContext(InvestmentContext);
+  const { initialInvestment, annualInvestment } = useContext(InvestmentContext);
 
-  const annualData = calculateInvestmentResults({
-    initialInvestment,
-    annualInvestment,
-    expectedReturn,
-    duration,
-  });
+  const annualData = useCalculateInvestmentResults();
 
   // Calculating the total interest accumulated over the years
   let totalInterest = 0;

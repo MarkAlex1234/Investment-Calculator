@@ -10,6 +10,7 @@ const INPUT_GROUP_TITLES = [
 ];
 
 const MAX_DURATION_IN_YEARS = 20;
+const MAX_INTIAL_INVESTMENT_IN_DOLLARS = 999999999;
 
 export default function UserInput() {
   const {
@@ -29,16 +30,19 @@ export default function UserInput() {
         title={INPUT_GROUP_TITLES[0]}
         inputValue={initialInvestment}
         setInputValue={setInitialInvestment}
+        max={MAX_INTIAL_INVESTMENT_IN_DOLLARS}
       />
       <Input
         title={INPUT_GROUP_TITLES[1]}
         inputValue={annualInvestment}
         setInputValue={setAnnualInvestment}
+        max={MAX_INTIAL_INVESTMENT_IN_DOLLARS}
       />
       <Input
         title={INPUT_GROUP_TITLES[2]}
         inputValue={expectedReturn}
         setInputValue={setExpectedReturn}
+        inputType="string"
       />
       <Input
         title={INPUT_GROUP_TITLES[3]}
